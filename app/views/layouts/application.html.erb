@@ -12,6 +12,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-light bg-light navbar-fixed-top">
+      <a class="navbar-brand" href="/cocktails">Cocktails</a>
+      <a class="btn btn-outline-primary my-2 my-sm-0" href="/cocktails/new">Add Cocktail</a>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
