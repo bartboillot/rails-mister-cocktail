@@ -33,7 +33,8 @@ puts 'Creating 10 fake cocktails'
   cocktail = Cocktail.new
   cocktail.name = Faker::Coffee.blend_name
   cocktail.description = Faker::Food.description
-  cocktail.image_url = "https://source.unsplash.com/1600x900/weekly?cocktail/#{n}"
+  file = URI.open("https://source.unsplash.com/1600x900/weekly?cocktail/#{n}")
+  cocktail.photo.attach(io: file, filename: "cocktail#{n}", content_type: 'image/png')
   cocktail.save
 end
 
