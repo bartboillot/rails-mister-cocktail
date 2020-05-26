@@ -1,6 +1,10 @@
 <h5>Add a new dose to <%= @cocktail.name %></h5>
-<%= simple_form_for [@cocktail, @dose] do |f| %>
-<%= f.input :description %>
-<%= f.association :ingredient %>
-<%= f.submit %>
+<%= simple_form_for [@cocktail, @dose], wrapper: :inline_form,
+  html: { class: "form-inline" },
+  wrapper_mappings: {
+    boolean: :inline_boolean
+  } do |f| %>
+<%= f.association :ingredient, input_html: { class: "mb-2 mr-sm-2 select2" }, placeholder: 'Ingredient' %>
+<%= f.input :measurement, input_html: { class: "mb-2 mr-sm-2" }, placeholder: 'Measurement' %>
+<%= f.button :submit, class: "btn-primary mb-2" %>
 <% end %>

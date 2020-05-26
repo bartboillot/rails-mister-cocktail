@@ -20,7 +20,7 @@
         <ul class="text-left">
           <% @cocktail.ingredients.each do |i| %>
           <li>
-            <strong><%= i.name %> </strong> - <%= i.doses.where(cocktail: @cocktail).first.description %>
+            <strong><%= i.name %> </strong> - <%= i.doses.where(cocktail: @cocktail).first.measurement %>
             (<%= link_to "Delete", cocktail_dose_path(i.doses.where(cocktail: @cocktail).first), method: :delete, data: {confirm: "Are you sure ?"}, class: "text-secondary" %>)
           </li>
           <% end %>

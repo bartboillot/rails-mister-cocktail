@@ -19,5 +19,6 @@
     <div class="container">
       <%= yield %>
     </div>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </body>
 </html>

@@ -44,7 +44,7 @@ Dose.destroy_all
 Cocktail.all.each do |c|
   (5..10).to_a.sample.times do
     dose = Dose.new
-    dose.description = Faker::Food.measurement
+    dose.measurement = Faker::Food.measurement
     dose.cocktail = c
     dose.ingredient = Ingredient.all.sample
     dose.save
