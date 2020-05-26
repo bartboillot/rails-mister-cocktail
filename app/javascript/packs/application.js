@@ -5,7 +5,7 @@
 import 'bootstrap';
 
 
-require("@rails/ujs").start()
+// require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -17,6 +17,6 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-import { initSelect2 } from '../components/init_select2';
+import { initSelect2 } from '../plugins/init_select2';
 
 initSelect2();
