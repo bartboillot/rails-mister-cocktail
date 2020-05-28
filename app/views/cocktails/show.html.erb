@@ -1,3 +1,11 @@
+<% content_for :navbar do %>
+  <%= link_to "Add a review", new_cocktail_review_path(@cocktail), class: "btn btn-outline-dark my-2 my-sm-0" %>
+  <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#AddDose">
+    Add a Dose
+  </button>
+<% end %>
+
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @cocktail.photo.key, crop: :fill %>);">
   <div class="container">
     <h1><%= @cocktail.name %></h1>
@@ -21,7 +29,6 @@
             </p>
             <footer class="blockquote-footer text-left mb-1">Anonymous</footer>
         <% end %>
-        <%= link_to "Add a review", new_cocktail_review_path(@cocktail), class: "btn btn-outline-dark" %>
       </div>
     </div>
     <div class="col-4">
@@ -40,9 +47,7 @@
           </li>
           <% end %>
         </ul>
-        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#AddDose">
-          Add a Dose
-        </button>
+
 
         <!-- Modal -->
         <div class="modal fade" id="AddDose" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
