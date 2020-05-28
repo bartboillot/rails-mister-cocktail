@@ -31,18 +31,38 @@
           <% @cocktail.ingredients.each do |i| %>
           <li>
             <strong><%= i.name %> </strong> - <%= i.doses.where(cocktail: @cocktail).first.measurement %>
-            (<%= link_to "Delete",
-                        dose_path(i.doses.where(cocktail: @cocktail).first),
+            <%= link_to dose_path(i.doses.where(cocktail: @cocktail).first),
                         method: :delete,
                         data: {confirm: "Are you sure ?"},
-                        class: "text-secondary" %>)
+                        class: "text-secondary" do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
           </li>
           <% end %>
         </ul>
-        <%= link_to "Add a Dose", new_cocktail_dose_path(@cocktail), class: "btn btn-outline-dark" %>
+        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#AddDose">
+          Add a Dose
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="AddDose" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add a new dose to <%= @cocktail.name %></h5>
+              </div>
+              <div class="modal-body">
+                  <%= simple_form_for [@cocktail, Dose.new] do |f| %>
+                  <%= f.association :ingredient, input_html: { class: "mb-2 mr-sm-2 select2" }, placeholder: 'Ingredient' %>
+                  <%= f.input :measurement, input_html: { class: "mb-2 mr-sm-2" }, placeholder: 'Measurement' %>
+                  <%= f.button :submit, class: "btn btn-outline-dark" %>
+                  <% end %>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-
+<!-- Button trigger modal -->
