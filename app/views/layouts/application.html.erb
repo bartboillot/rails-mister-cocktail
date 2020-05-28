@@ -9,10 +9,11 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-light navbar-fixed-top">
+    <nav class="navbar navbar-light bg-light sticky-top">
       <a class="navbar-brand" href="/cocktails">Cocktails</a>
       <a class="btn btn-outline-primary my-2 my-sm-0" href="/cocktails/new">Add Cocktail</a>
     </nav>
@@ -20,5 +21,9 @@
       <%= yield %>
     </div>
       <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+       AOS.init();
+    </script>
   </body>
 </html>

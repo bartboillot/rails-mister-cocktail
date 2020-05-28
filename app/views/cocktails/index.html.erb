@@ -8,8 +8,8 @@
      <div class="row">
         <% @cocktails.each do |c| %>
         <div class="col-4 mb-3">
-          <%= link_to cocktail_path(c) do %>
-          <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path c.photo.key, height: 180, crop: :fill %>)">
+          <%= link_to cocktail_path(c), class: "text-decoration-none" do %>
+          <div class="card-image grow" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path c.photo.key, height: 180, crop: :fill %>)">
             <%= c.name %>
           </div>
           <% end %>

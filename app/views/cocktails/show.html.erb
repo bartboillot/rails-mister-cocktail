@@ -13,6 +13,16 @@
         <h3>Description:</h3>
         <p class="text-left"><%= @cocktail.description %></p>
       </div>
+      <div class="cocktail-show-card">
+        <h3>Reviews:</h3>
+        <% @cocktail.reviews.each do |review| %>
+            <p class="text-left m-0">
+              <%= review.content.capitalize %>
+            </p>
+            <footer class="blockquote-footer text-left mb-1">Anonymous</footer>
+        <% end %>
+        <%= link_to "Add a review", new_cocktail_review_path(@cocktail), class: "btn btn-outline-dark" %>
+      </div>
     </div>
     <div class="col-4">
       <div class="cocktail-show-card">
@@ -21,7 +31,11 @@
           <% @cocktail.ingredients.each do |i| %>
           <li>
             <strong><%= i.name %> </strong> - <%= i.doses.where(cocktail: @cocktail).first.measurement %>
-            (<%= link_to "Delete", cocktail_dose_path(i.doses.where(cocktail: @cocktail).first), method: :delete, data: {confirm: "Are you sure ?"}, class: "text-secondary" %>)
+            (<%= link_to "Delete",
+                        dose_path(i.doses.where(cocktail: @cocktail).first),
+                        method: :delete,
+                        data: {confirm: "Are you sure ?"},
+                        class: "text-secondary" %>)
           </li>
           <% end %>
         </ul>

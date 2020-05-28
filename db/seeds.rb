@@ -51,4 +51,16 @@ Cocktail.all.each do |c|
   end
 end
 
+puts "Cleaning Review database ..."
+Review.destroy_all
+
+Cocktail.all.each do |c|
+  (5..15).to_a.sample.times do
+    review = Review.new
+    review.content = Faker::Movies::HarryPotter.quote
+    review.cocktail = c
+    review.save
+  end
+end
+
 puts 'Done!'

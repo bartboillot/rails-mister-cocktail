@@ -22,3 +22,11 @@
   rgba(0,0,0,0.1);
   border-radius: 3px;
 }
+
+.grow {
+transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+transform: scale(1.1);
+}
